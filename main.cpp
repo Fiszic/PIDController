@@ -2,6 +2,15 @@
 #include <cmath>
 #include <fstream>
 
+double drag_coeff = 0.1;
+
+double include_drag(bool add_drag, double velocity) {
+    if (add_drag) {
+        return drag_coeff * velocity;
+    }
+    return 0;
+}
+
 int main() {
     std::ofstream file("pid_simulation.csv");
     file << "time,position,velocity,error\n";
@@ -38,7 +47,7 @@ int main() {
         D = kd * deriv;
 
         output = P + I + D;
-        accel = output / mass;
+        accel = (output - include_drag(true, velocity))/ mass;
         velocity += accel * dt;
         pos += velocity * dt;
         prev_error = error;
