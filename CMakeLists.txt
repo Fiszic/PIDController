@@ -3,4 +3,8 @@ project(PIDController)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(PIDController main.cpp)
+add_executable(PIDController main.cpp
+        PID.cpp
+        PID.h
+        robot.cpp
+        robot.h)
