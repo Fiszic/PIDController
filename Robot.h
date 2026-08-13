@@ -4,23 +4,31 @@
 
 #ifndef PIDCONTROLLER_ROBOT_H
 #define PIDCONTROLLER_ROBOT_H
+#include "State.h"
 
 
 class Robot {
 private:
-    double position;
-    double velocity;
-    double acceleration;
+    State state;
     double mass;
     double drag;
-    double force;
+    Vec3 force;
 public:
     Robot(double mass, double drag);
     void update(double dt);
-    void applyForce(double output);
-    double getPosition() const;
-    double getVelocity() const;
-    double getAcceleration() const;
+    void applyForce(Vec3 output);
+    Vec3& getPosition() const;
+    Vec3& getVelocity() const;
+    Vec3& getAcceleration() const;
+    double getXPosition() const;
+    double getYPosition() const;
+    double getZPosition() const;
+    double getXVelocity() const;
+    double getYVelocity() const;
+    double getZVelocity() const;
+    double getXAcceleration() const;
+    double getYAcceleration() const;
+    double getZAcceleration() const;
 };
 
 
