@@ -16,10 +16,10 @@ private:
 public:
     Robot(double mass, double drag);
     void update(double dt);
-    void applyForce(Vec3 output);
-    Vec3& getPosition() const;
-    Vec3& getVelocity() const;
-    Vec3& getAcceleration() const;
+    void applyForce(const Vec3 &output);
+    const Vec3& getPosition() const;
+    const Vec3& getVelocity() const;
+    const Vec3& getAcceleration() const;
     double getXPosition() const;
     double getYPosition() const;
     double getZPosition() const;

@@ -22,21 +22,21 @@ void Robot::update(double dt) {
     state.position.y += state.velocity.y * dt;
 }
 
-void Robot::applyForce(Vec3 output) {
+void Robot::applyForce(const Vec3 &output) {
     force.x = output.x;
     force.y = output.y;
     force.z = output.z;
 }
 
-Vec3 Robot::getPosition() const {
+const Vec3& Robot::getPosition() const {
     return state.position;
 }
 
-Vec3 Robot::getVelocity() const {
+const Vec3& Robot::getVelocity() const {
     return state.velocity;
 }
 
-Vec3 Robot::getAcceleration() const {
+const Vec3& Robot::getAcceleration() const {
     return state.acceleration;
 }
 

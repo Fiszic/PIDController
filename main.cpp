@@ -4,7 +4,7 @@
 #include "Robot.h"
 #include "PID.h"
 
-std::ofstream& extractXYZ(std::ofstream& file, Vec3& vector) {
+std::ofstream& extractXYZ(std::ofstream& file, const Vec3& vector) {
     file << vector.x << "," << vector.y << "," << vector.z;
     return file;
 }
@@ -14,7 +14,7 @@ int main() {
     file << "time,x,y,z,v_x,v_y,v_z,a_x,a_y,a_z,x_error,y_error,z_error\n";
     double time = 0.0;
     double tolerance = 0.001;
-    Vec3 target(10, 0, 0);
+    Vec3 target(10, 5, 0);
     double mass = 1;
     double drag = 0.1;
     double dt = 0.1;

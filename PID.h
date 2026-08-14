@@ -8,11 +8,12 @@
 
 class PID {
 private:
-    double kp;
-    double ki;
-    double kd;
+    const double kp;
+    const double ki;
+    const double kd;
     double integral=0;
     double previous_error=0;
+    bool first_calculation=true;
 public:
     PID(double kp, double ki, double kd);
     double calculate(double target, double pos, double dt);
