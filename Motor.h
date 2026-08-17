@@ -12,9 +12,8 @@ private:
     std::string name;
     double max_rpm;
     double max_torque;
+    double power=0.0;
 
-    double actual_rpm=0;
-    double target_rpm=0;
     double current=0;
     double temperature=25;
     bool is_enabled=false;
@@ -22,8 +21,11 @@ public:
     Motor(std::string name, double max_rpm, double max_torque);
     void enable();
     void disable();
-    void set_speed(double rpm);
+    void setPower(double newPower);
+    double getPower() const;
     void stop();
+private:
+    void applyPower();
 };
 
 

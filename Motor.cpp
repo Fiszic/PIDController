@@ -15,13 +15,33 @@ void Motor::enable() {
 
 void Motor::disable() {
     is_enabled = false;
-    target_rpm = 0;
+    power = 0.0;
+    applyPower();
 }
 
-void Motor::set_speed(double rpm) {
-    target_rpm = std::max(-max_rpm, std::min(max_rpm, rpm));
+void Motor::setPower(double newPower) {
+    if (newPower > 1.0) {
+        newPower = 1.0;
+    }
+    if (newPower < -1.0) {
+        newPower = -1.0;
+    }
+
+    power = newPower;
+
+    if (is_enabled) {
+        applyPower();
+    }
+}
+
+double Motor::getPower() const {
+    return power;
 }
 
 void Motor::stop() {
     target_rpm = 0;
+}
+
+void Motor::applyPower() {
+    // to be worked on maybe in the future if I want to add a motor driver.
 }
