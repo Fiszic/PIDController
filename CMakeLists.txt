@@ -8,4 +8,10 @@ add_executable(PIDController main.cpp
         PID.h
         robot.cpp
         robot.h
-        State.h)
+        State.h
+        Motor.cpp
+        Motor.h
+        Encoder.cpp
+        Encoder.h
+        MotorController.cpp
+        MotorController.h)

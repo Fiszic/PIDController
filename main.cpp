@@ -16,11 +16,11 @@ int main() {
     double tolerance = 0.001;
     Vec3 target(10, 5, 0);
     double mass = 1;
-    double drag = 0.1;
+    double drag = 0.2;
     double dt = 0.1;
     Robot robot(mass, drag);
-    PID pidX(0.2, 0.0, 0.3);
-    PID pidY(0.2, 0.0, 0.3);
+    PID pidX(0.2, 0.0, 0.5);
+    PID pidY(0.2, 0.0, 0.5);
     Vec3 error = target;
 
     double iteration_count = 0;
