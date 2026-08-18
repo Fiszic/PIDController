@@ -17,7 +17,7 @@ void MotorController::setTargetVelocity(const double target) {
     this->targetVelocity = target;
 }
 
-void MotorController::setTargetPower(double target) {
+void MotorController::setPower(double target) {
     mode = ControlMode::Power;
     this->targetPower = target;
 }

@@ -28,7 +28,7 @@ private:
     double targetPower=0;
 public:
     MotorController(const std::string &name, double kp, double ki, double kd, double vkp, double vki, double vkd, double max_rpm, double max_torque, int cpr);
-    void setTargetPower(double target);
+    void setPower(double target);
     void setTargetPosition(double target);
     void setTargetVelocity(double target);
     void update(double dt);

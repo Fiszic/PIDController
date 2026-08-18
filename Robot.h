@@ -10,6 +10,7 @@
 class Robot {
 private:
     State state;
+    
     double mass;
     double drag;
     Vec3 force;
