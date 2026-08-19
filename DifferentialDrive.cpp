@@ -11,6 +11,11 @@ rightMotor("DriveRightMotor", 0.2, 0.0, 0.3, 0.0, 0.0, 0.0, 1000, 5, 2048){
 
 }
 
+void DifferentialDrive::setVelocity(double leftVelocity, double rightVelocity) {
+    leftMotor.setTargetVelocity(leftVelocity);
+    rightMotor.setTargetVelocity(rightVelocity);
+}
+
 void DifferentialDrive::arcadeDrive(double forward, double rotation) {
     double left = forward + rotation;
     double right = forward - rotation;

@@ -4,74 +4,22 @@
 
 #include "Robot.h"
 
-Robot::Robot(double mass, double drag): mass(mass), drag(drag){
-    state.position.set(0, 0, 0);
-    state.velocity.set(0, 0, 0);
-    state.acceleration.set(0, 0, 0);
-    force.set(0, 0, 0);
+Robot::Robot(double mass, double drag): drive(0.05, 0.3), mass(mass), drag(drag){
+
 }
 
 void Robot::update(double dt) {
-    state.acceleration.x = (force.x - drag * state.velocity.x) / mass;
-    state.acceleration.y = (force.y - drag * state.velocity.y) / mass;
-
-    state.velocity.x += state.acceleration.x * dt;
-    state.velocity.y += state.acceleration.y * dt;
-
-    state.position.x += state.velocity.x * dt;
-    state.position.y += state.velocity.y * dt;
+    drive.update(dt);
 }
 
-void Robot::applyForce(const Vec3 &output) {
-    force.x = output.x;
-    force.y = output.y;
-    force.z = output.z;
+void Robot::driveForward(double velocity) {
+    drive.setVelocity(velocity, velocity);
 }
 
-const Vec3& Robot::getPosition() const {
-    return state.position;
+void Robot::turn(double velocity) {
+    drive.setVelocity(-velocity, velocity); //turns left if velocty is positive.
 }
 
-const Vec3& Robot::getVelocity() const {
-    return state.velocity;
-}
-
-const Vec3& Robot::getAcceleration() const {
-    return state.acceleration;
-}
-
-double Robot::getXPosition() const{
-    return state.position.x;
-}
-
-double Robot::getYPosition() const {
-    return state.position.y;
-}
-
-double Robot::getZPosition() const {
-    return state.position.z;
-}
-
-double Robot::getXVelocity() const {
-    return state.velocity.x;
-}
-
-double Robot::getYVelocity() const {
-    return state.velocity.y;
-}
-
-double Robot::getZVelocity() const {
-    return state.velocity.z;
-}
-
-double Robot::getXAcceleration() const {
-    return state.acceleration.x;
-}
-
-double Robot::getYAcceleration() const {
-    return state.acceleration.y;
-}
-
-double Robot::getZAcceleration() const {
-    return state.acceleration.z;
+void Robot::stop() {
+    drive.stop();
 }
