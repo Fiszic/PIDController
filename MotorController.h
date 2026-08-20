@@ -32,6 +32,7 @@ public:
     void setTargetPosition(double target);
     void setTargetVelocity(double target);
     void update(double dt);
+    const Encoder& getEncoder() const;
 };
 
 

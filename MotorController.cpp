@@ -24,7 +24,7 @@ void MotorController::setPower(double target) {
 
 void MotorController::update(double dt) {
     if (mode == ControlMode::Position) {
-        double currentPos = encoder.getPositionDegrees();
+        double currentPos = encoder.getDegrees();
         double output = positionPID.calculate(targetPosition, currentPos, dt);
         motor.setPower(output);
     }
@@ -36,4 +36,8 @@ void MotorController::update(double dt) {
     else if (mode == ControlMode::Power) {
         motor.setPower(targetPower);
     }
+}
+
+const Encoder &MotorController::getEncoder() const {
+    return encoder;
 }

@@ -39,7 +39,7 @@ double Motor::getPower() const {
 }
 
 void Motor::stop() {
-    target_rpm = 0;
+    power = 0;
 }
 
 void Motor::applyPower() {

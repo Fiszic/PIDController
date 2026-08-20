@@ -39,3 +39,21 @@ void DifferentialDrive::update(double dt) {
     leftMotor.update(dt);
     rightMotor.update(dt);
 }
+
+void DifferentialDrive::updateOdometry(double dt) {
+    double leftDistance = leftMotor.getEncoder().getRevolutions() * 2.0 * std::numbers::pi * wheelRadius;
+    double rightDistance = rightMotor.getEncoder().getRevolutions() * 2.0 * std::numbers::pi * wheelRadius;
+
+    double deltaLeft = leftDistance - previousLeftDistance;
+    double deltaRight = rightDistance - previousRightDistance;
+
+    double deltaTheta = (deltaRight - deltaLeft) / trackWidth;
+    double deltaDistance = (deltaRight - deltaLeft) / 2.0;
+
+    x += deltaDistance * std::cos(theta);
+    y += deltaDistance * std::sin(theta);
+    theta += deltaTheta;
+
+    previousLeftDistance = leftDistance;
+    previousRightDistance = rightDistance;
+}

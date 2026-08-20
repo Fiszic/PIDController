@@ -11,11 +11,11 @@ class Encoder {
 private:
     int64_t counts;
     int countsPerRevolution;
-    double velocity;
+    double velocity=0;
 public:
     Encoder(int cpr);
-    double getPositionDegrees() const;
-    double getPositionRevolutions() const;
+    double getDegrees() const;
+    double getRevolutions() const;
     void update(int64_t newCounts);
     void addCounts(int64_t amount, double dt);
     int64_t getCounts() const;

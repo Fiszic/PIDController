@@ -6,11 +6,11 @@
 
 Encoder::Encoder(const int cpr) : counts(0), countsPerRevolution(cpr){}
 
-double Encoder::getPositionDegrees() const  {
-    return getPositionRevolutions() * 360.0;
+double Encoder::getDegrees() const  {
+    return getRevolutions() * 360.0;
 }
 
-double Encoder::getPositionRevolutions() const {
+double Encoder::getRevolutions() const {
     return static_cast<double>(counts) / countsPerRevolution;
 }
 
