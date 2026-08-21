@@ -16,4 +16,6 @@ add_executable(PIDController main.cpp
         MotorController.cpp
         MotorController.h
         DifferentialDrive.cpp
-        DifferentialDrive.h)
+        DifferentialDrive.h
+        Gyroscope.cpp
+        Gyroscope.h)
